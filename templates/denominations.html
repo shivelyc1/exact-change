@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Exact Currency</title>
+
+		<!-- This is specific with Flask to use styles. 
+     Refering to the static files and inserting the url to the styles.css -->
+		<link
+			href="{{ url_for('static', filename='styles/style.css')}}"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<h1>Exact Change</h1>
+		<p>
+			Enter the dollar amount and see the exact change that is equivalent to the
+			dollar amount.
+		</p>
+
+		<form action="/dollar-amount">
+			<input
+				type="number"
+				name="dollar-amount"
+				step=".01"
+				min="0"
+				id="dollar-amount-input"
+				placeholder="Enter a dollar amount..."
+			/>
+			<button type="submit">Submit</button>
+		</form>
+
+		<table>
+			<tr>
+				<th>Denomination</th>
+				<th>Amount</th>
+			</tr>
+			<tr>
+				<td>Hundreds</td>
+				<td>{hundreds}</td>
+			</tr>
+			<tr>
+				<td>Fifties</td>
+				<td>{fifites}</td>
+			</tr>
+			<tr>
+				<td>Twenties</td>
+				<td>{twenties}</td>
+			</tr>
+			<tr>
+				<td>Tens</td>
+				<td>{tens}</td>
+			</tr>
+			<tr>
+				<td>Fives</td>
+				<td>{fives}</td>
+			</tr>
+			<tr>
+				<td>Ones</td>
+				<td>{ones}</td>
+			</tr>
+			<tr>
+				<td>Quarters</td>
+				<td>{quarters}</td>
+			</tr>
+			<tr>
+				<td>Dimes</td>
+				<td>{dimes}</td>
+			</tr>
+			<tr>
+				<td>Nickels</td>
+				<td>{nickels}</td>
+			</tr>
+			<tr>
+				<td>Pennies</td>
+				<td>{pennies}</td>
+			</tr>
+		</table>
+	</body>
+</html>
