@@ -1,4 +1,5 @@
 from Enum.denomination_values import DenominationValues
+from .types.denominations_type import DenominationsType
 from execptions.invalid_dollar_amount_range import InvalidDollarAmountRange
 import math
 
@@ -22,7 +23,7 @@ def isValidDollarAmount(dollarAmount: float) -> bool:
   return dollarAmount >= 0
 
 
-def CalculateExactChange(dollarAmount: float) -> dict:
+def CalculateExactChange(dollarAmount: float) -> DenominationsType:
   '''This function will calculate the exact amount of denominations to return for the dollarAmount. 
 
   **Parameters:**
@@ -53,42 +54,42 @@ def CalculateExactChange(dollarAmount: float) -> dict:
   # Subtract fiftiesQty dollar value from dollarAmount
   dollarAmount -= fifitesQty * DenominationValues.FIFTY
 
-  
+  # Twenties Quantity
   twentiesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TWENTY)
 
   dollarAmount -= twentiesQty * DenominationValues.TWENTY
 
-
+  # Tens Quantity
   tensQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TEN)
 
   dollarAmount -= tensQty * DenominationValues.TEN
 
-
+  # Fives Quantity
   fivesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.FIVE)
 
   dollarAmount -= fivesQty * DenominationValues.FIVE
 
-  
+  # Ones Quantity
   onesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.ONE)
 
   dollarAmount -= onesQty * DenominationValues.ONE
 
-  
+  # Quarter Quantity
   quartersQty = CalcDenominationQuantity(dollarAmount, DenominationValues.QUARTER)
 
   dollarAmount -= quartersQty * DenominationValues.QUARTER
 
-
+  # Dimes Quantity
   dimesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.DIME)
 
   dollarAmount -= dimesQty * DenominationValues.DIME
 
-
+  # Nickels Quantity
   nickelsQty = CalcDenominationQuantity(dollarAmount, DenominationValues.NICKEL)
 
   dollarAmount -= nickelsQty * DenominationValues.NICKEL
 
-
+  # Pennies Quantity
   penniesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.PENNY)
 
   dollarAmount -= penniesQty * DenominationValues.PENNY
@@ -103,5 +104,14 @@ def CalculateExactChange(dollarAmount: float) -> dict:
   
 
   return {
-    
+    "hundreds": hundredsQty,
+    "fifities": fifitesQty,
+    "twenties": twentiesQty,
+    "tens" : tensQty,
+    "fives" : fivesQty,
+    "ones" : onesQty,
+    "quarters" : quartersQty,
+    "dimes" : dimesQty,
+    "nickels" : nickelsQty,
+    "pennies" : penniesQty
   }
