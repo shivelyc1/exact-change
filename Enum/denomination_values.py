@@ -7,7 +7,7 @@ This should help make the code more readable when using these values.
 from enum import Enum
 
 class DenominationValues(Enum):
-  '''This enumerator is USD Denomination Values in dollars.'''
+  '''This enumerator is USD Denomination Values'''
   PENNY = 0.01
   NICKEL = 0.05
   DIME = 0.10
