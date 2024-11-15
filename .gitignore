@@ -1,3 +1,5 @@
 
 # Virtual Environment for Python development
 .venv
+.vscode
+__pycache__
