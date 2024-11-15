@@ -1,0 +1,27 @@
+.error {
+	color: red;
+}
+
+table {
+	background-color: lightgray;
+	width: 600px;
+	margin: 2rem auto;
+}
+
+th {
+	font-size: 20px;
+	padding: 0 0.25rem;
+}
+
+h1 {
+	text-align: center;
+}
+
+.sub-title {
+	text-align: center;
+}
+
+form {
+	width: 600px;
+	margin: 2rem auto;
+}
