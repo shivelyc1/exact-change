@@ -29,3 +29,15 @@ All set!
 ## exact_change.py
 
 ## denomination_values.py
+
+## templates
+
+This folder is used for html templates for **Flask** to use. This currently has **index.html** which is sent to the client with endpoint `/`
+
+## static
+
+This folder is used for javascript, css, images, etc. **Flask** will use this if the templates are linking to files. For example,
+
+`<link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />`
+
+**Flask** can reference static files in the html templates using url_for().
