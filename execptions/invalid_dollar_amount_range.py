@@ -1,5 +1,3 @@
-
-
 class InvalidDollarAmountRange(Exception):
   '''Invalid Dollar Amount Range Exception. This should be thrown when the dollar amount is < 0.'''
 
