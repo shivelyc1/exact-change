@@ -41,7 +41,7 @@ def CalculateExactChange(dollarAmount: float) -> DenominationsType:
   
   ### Ran into bug with floats where there where errors when multiplying and dividing to cause .00999999999 as a result for a number. ###
   ### Converted to cents for an integer value to eliminate this issue ###
-
+  
   # Default Round up to correct decimal issues. Rounding to 2 decimal places
   dollarAmountinCents = math.ceil(dollarAmount * 100)
 
