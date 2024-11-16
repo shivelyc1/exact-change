@@ -1,6 +1,6 @@
 from Enum.denomination_values import DenominationValues
 from return_types.denominations_type import DenominationsType
-from execptions.invalid_dollar_amount_range import InvalidDollarAmountRange
+from exceptions.invalid_dollar_amount_range import InvalidDollarAmountRange
 import math
 
 def CalcDenominationQuantity(dollarAmount: float, denominationValue: DenominationValues ) -> int:
@@ -15,7 +15,7 @@ def CalcDenominationQuantity(dollarAmount: float, denominationValue: Denominatio
     **Returns:**
       int: Amount of denomination that will fit in the dollarAmount
   '''
-
+  # Round down because we need the whole number and not the decimal value
   return math.floor(dollarAmount / denominationValue.value)
 
 
@@ -33,7 +33,7 @@ def CalculateExactChange(dollarAmount: float) -> DenominationsType:
   **Returns:** 
     dict: dictionary of denominations and the amount of each to equal the dollarAmount. 
   '''
-
+  
   # Validate dollarAmount
   if not isValidDollarAmount(dollarAmount):
     # Raise Custom Exception.
@@ -55,54 +55,54 @@ def CalculateExactChange(dollarAmount: float) -> DenominationsType:
   # Subtract fiftiesQty dollar value from dollarAmount
   dollarAmount -= fifitesQty * DenominationValues.FIFTY.value
 
+
   # Twenties Quantity
   twentiesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TWENTY)
 
   dollarAmount -= twentiesQty * DenominationValues.TWENTY.value
+
 
   # Tens Quantity
   tensQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TEN)
 
   dollarAmount -= tensQty * DenominationValues.TEN.value
 
+ 
   # Fives Quantity
   fivesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.FIVE)
 
   dollarAmount -= fivesQty * DenominationValues.FIVE.value
+
 
   # Ones Quantity
   onesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.ONE)
 
   dollarAmount -= onesQty * DenominationValues.ONE.value
 
+
   # Quarter Quantity
   quartersQty = CalcDenominationQuantity(dollarAmount, DenominationValues.QUARTER)
 
   dollarAmount -= quartersQty * DenominationValues.QUARTER.value
+
 
   # Dimes Quantity
   dimesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.DIME)
 
   dollarAmount -= dimesQty * DenominationValues.DIME.value
 
+
   # Nickels Quantity
   nickelsQty = CalcDenominationQuantity(dollarAmount, DenominationValues.NICKEL)
 
   dollarAmount -= nickelsQty * DenominationValues.NICKEL.value
+
 
   # Pennies Quantity
   penniesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.PENNY)
 
   dollarAmount -= penniesQty * DenominationValues.PENNY.value
 
-  if dollarAmount != 0:
-    print(f"DollarAmount: {dollarAmount}")
-
-
-
-
-
-  
 
   return {
     "hundreds": hundredsQty,
