@@ -3,7 +3,7 @@ from return_types.denominations_type import DenominationsType
 from exceptions.invalid_dollar_amount_range import InvalidDollarAmountRange
 import math
 
-def CalcDenominationQuantity(dollarAmount: float, denominationValue: DenominationValues ) -> int:
+def CalcDenominationQuantity(dollarAmount: int, denominationValue: DenominationValues ) -> int:
   '''Calculate the quantity of the specified denomination value. 
   
     **Example:** $20.00, DenominationValues.FIVE = 4.
@@ -38,70 +38,73 @@ def CalculateExactChange(dollarAmount: float) -> DenominationsType:
   if not isValidDollarAmount(dollarAmount):
     # Raise Custom Exception.
     raise InvalidDollarAmountRange("Dollar Amount is less than zero.")
+  
+  ### Ran into bug with floats where there where errors when multiplying and dividing to cause .00999999999 as a result for a number ###
+  ### Converted to cents for an integer value to eliminate this issue ###
 
   # Default Round up to correct decimal issues. Rounding to 2 decimal places
-  dollarAmount = math.ceil(dollarAmount * 100) / 100
+  dollarAmountinCents = math.ceil(dollarAmount * 100)
 
   # Calculate Hundreds
-  hundredsQty = CalcDenominationQuantity(dollarAmount, DenominationValues.HUNDRED)
+  hundredsQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.HUNDRED)
 
   # Subtract hundredsQty dollar value from dollarAmount
-  dollarAmount -= hundredsQty * DenominationValues.HUNDRED.value
+  dollarAmountinCents -= hundredsQty * DenominationValues.HUNDRED.value
 
 
   # Calculate Fifties
-  fifitesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.FIFTY)
+  fifitesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.FIFTY)
 
   # Subtract fiftiesQty dollar value from dollarAmount
-  dollarAmount -= fifitesQty * DenominationValues.FIFTY.value
+  dollarAmountinCents -= fifitesQty * DenominationValues.FIFTY.value
 
 
   # Twenties Quantity
-  twentiesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TWENTY)
+  twentiesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.TWENTY)
 
-  dollarAmount -= twentiesQty * DenominationValues.TWENTY.value
+  dollarAmountinCents -= twentiesQty * DenominationValues.TWENTY.value
 
 
   # Tens Quantity
-  tensQty = CalcDenominationQuantity(dollarAmount, DenominationValues.TEN)
+  tensQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.TEN)
 
-  dollarAmount -= tensQty * DenominationValues.TEN.value
+  dollarAmountinCents -= tensQty * DenominationValues.TEN.value
 
  
   # Fives Quantity
-  fivesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.FIVE)
+  fivesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.FIVE)
 
-  dollarAmount -= fivesQty * DenominationValues.FIVE.value
+  dollarAmountinCents -= fivesQty * DenominationValues.FIVE.value
 
 
   # Ones Quantity
-  onesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.ONE)
+  onesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.ONE)
 
-  dollarAmount -= onesQty * DenominationValues.ONE.value
+  dollarAmountinCents -= onesQty * DenominationValues.ONE.value
 
 
   # Quarter Quantity
-  quartersQty = CalcDenominationQuantity(dollarAmount, DenominationValues.QUARTER)
+  quartersQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.QUARTER)
 
-  dollarAmount -= quartersQty * DenominationValues.QUARTER.value
+  dollarAmountinCents -= quartersQty * DenominationValues.QUARTER.value
 
 
   # Dimes Quantity
-  dimesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.DIME)
+  dimesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.DIME)
 
-  dollarAmount -= dimesQty * DenominationValues.DIME.value
+  dollarAmountinCents -= dimesQty * DenominationValues.DIME.value
 
 
   # Nickels Quantity
-  nickelsQty = CalcDenominationQuantity(dollarAmount, DenominationValues.NICKEL)
+  nickelsQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.NICKEL)
 
-  dollarAmount -= nickelsQty * DenominationValues.NICKEL.value
+  dollarAmountinCents -= nickelsQty * DenominationValues.NICKEL.value
 
 
   # Pennies Quantity
-  penniesQty = CalcDenominationQuantity(dollarAmount, DenominationValues.PENNY)
+  penniesQty = CalcDenominationQuantity(dollarAmountinCents, DenominationValues.PENNY)
 
-  dollarAmount -= penniesQty * DenominationValues.PENNY.value
+  dollarAmountinCents -= penniesQty * DenominationValues.PENNY.value
 
 
   return {
