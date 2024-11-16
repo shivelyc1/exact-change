@@ -3,20 +3,20 @@ from return_types.denominations_type import DenominationsType
 from exceptions.invalid_dollar_amount_range import InvalidDollarAmountRange
 import math
 
-def CalcDenominationQuantity(dollarAmount: int, denominationValue: DenominationValues ) -> int:
+def CalcDenominationQuantity(dollarAmountInCents: int, denominationValue: DenominationValues ) -> int:
   '''Calculate the quantity of the specified denomination value. 
   
     **Example:** $20.00, DenominationValues.FIVE = 4.
   
     **Paremeters:**
-      dollarAmount (float): The dollar amount to divide
+      dollarAmount (int): The dollar amount to divide
       denominationValue (DenominationValue): The denomination to divide by
 
     **Returns:**
       int: Amount of denomination that will fit in the dollarAmount
   '''
   # Round down because we need the whole number and not the decimal value
-  return math.floor(dollarAmount / denominationValue.value)
+  return math.floor(dollarAmountInCents / denominationValue.value)
 
 
 def isValidDollarAmount(dollarAmount: float) -> bool:
@@ -39,7 +39,7 @@ def CalculateExactChange(dollarAmount: float) -> DenominationsType:
     # Raise Custom Exception.
     raise InvalidDollarAmountRange("Dollar Amount is less than zero.")
   
-  ### Ran into bug with floats where there where errors when multiplying and dividing to cause .00999999999 as a result for a number ###
+  ### Ran into bug with floats where there where errors when multiplying and dividing to cause .00999999999 as a result for a number. ###
   ### Converted to cents for an integer value to eliminate this issue ###
 
   # Default Round up to correct decimal issues. Rounding to 2 decimal places

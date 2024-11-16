@@ -25,53 +25,53 @@ class TestExactChange(unittest.TestCase):
     self.assertFalse(isValidDollarAmount(-0.2))
 
   # CalcDenominationQuantity() Tests
-  # Dollar amount zero
+  # DollarAmountInCents zero
   def test_whenCalcDenominationQuantityDollarAmount0DenominationValueHUNDRED_thenReturnIs0(self):
     self.assertEqual(CalcDenominationQuantity(0, DenominationValues.HUNDRED), 0)
 
-  # Dollar Amount = 100, DenominationValue = HUNDRED
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueHUNDRED_thenReturnIs1(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.HUNDRED), 1)
+  # DollarAmountInCents = 10000, DenominationValue = HUNDRED
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueHUNDRED_thenReturnIs1(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.HUNDRED), 1)
 
-  # Dollar Amount = 100, DenominationValue = FIFTY
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueFIFTY_thenReturnIs2(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.FIFTY), 2)
+  # DollarAmountInCents = 10000, DenominationValue = FIFTY
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueFIFTY_thenReturnIs2(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.FIFTY), 2)
 
-  # Dollar Amount = 100, DenominationValue = TWENTY
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueTWENTY_thenReturnIs5(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.TWENTY), 5)
+  # DollarAmountInCents = 10000, DenominationValue = TWENTY
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueTWENTY_thenReturnIs5(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.TWENTY), 5)
 
-  # Dollar Amount = 100, DenominationValue = TEN
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueTEN_thenReturnIs10(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.TEN), 10)
+  # DollarAmountInCents = 10000, DenominationValue = TEN
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueTEN_thenReturnIs10(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.TEN), 10)
 
-  # Dollar Amount = 100, DenominationValue = FIVE
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueFIVE_thenReturnIs20(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.FIVE), 20)
+  # DollarAmountInCents = 10000, DenominationValue = FIVE
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueFIVE_thenReturnIs20(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.FIVE), 20)
 
-  # Dollar Amount = 100, DenominationValue = ONE
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueONE_thenReturnIs100(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.ONE), 100)
+  # DollarAmountInCents = 10000, DenominationValue = ONE
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueONE_thenReturnIs10000(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.ONE), 100)
 
-  # Dollar Amount = 100, DenominationValue = QUARTER
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueQUARTER_thenReturnIs400(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.QUARTER), 400)
+  # DollarAmountInCents = 10000, DenominationValue = QUARTER
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueQUARTER_thenReturnIs400(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.QUARTER), 400)
 
-  # Dollar Amount = 100, DenominationValue = DIME
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueDIME_thenReturnIs1000(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.DIME), 1000)
+  # DollarAmountInCents = 10000, DenominationValue = DIME
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueDIME_thenReturnIs100000(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.DIME), 1000)
 
-  # Dollar Amount = 100, DenominationValue = NICKEL
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValueNICKEL_thenReturnIs2000(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.NICKEL), 2000)
+  # DollarAmountInCents = 10000, DenominationValue = NICKEL
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValueNICKEL_thenReturnIs2000(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.NICKEL), 2000)
 
-  # Dollar Amount = 100, DenominationValue = PENNY
-  def test_whenCalcDenominationQuantityDollarAmount100DenominationValuePENNY_thenReturnIs10000(self):
-    self.assertEqual(CalcDenominationQuantity(100, DenominationValues.PENNY), 10000)
+  # DollarAmountInCents = 10000, DenominationValue = PENNY
+  def test_whenCalcDenominationQuantityDollarAmount10000DenominationValuePENNY_thenReturnIs10000(self):
+    self.assertEqual(CalcDenominationQuantity(10000, DenominationValues.PENNY), 10000)
 
 
   # CalculateExactChange() Tests
-  # Dollar Amount = 0 then Dictionary with denomination values are all zero
+  # DollarAmountInCents = 0 then Dictionary with denomination values are all zero
   def test_whenCalculateExactChangeDollarAmount0_thenReturnDenominationTypeIsZeros(self):
     denominationReturn: DenominationsType = {
       'hundreds': 0,
@@ -123,9 +123,10 @@ class TestExactChange(unittest.TestCase):
     
     self.assertDictEqual(CalculateExactChange(186.41), denominationReturn)
 
-  # DollarAmount = -1 then check for an exception Raised
+  # DollarAmount = -1 then check for an InvalidDollarAmountRange Raised
   def test_whenCalculateExactChangeDollarAmountNegative1_thenRaisedInvalidDollarAmountRange(self):
-    self.assertRaises(CalculateExactChange(-1), InvalidDollarAmountRange)
+    with self.assertRaises(InvalidDollarAmountRange):
+      CalculateExactChange(-1)
 
 
 if __name__ == '__main__':

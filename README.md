@@ -56,17 +56,17 @@ The server is set up to handle error codes and render those accordingly.
 
 **exact_change.py** is responsible for calculating the denomination quantities for a specific dollar amount. This holds helper functions to organize the code.
 
-### def CalcDenominationQuantity(dollarAmount: float, denominationValue: DenominationValue) -> int
+### def CalcDenominationQuantity(dollarAmountInCents: int, denominationValue: DenominationValue) -> int
 
-This function is used to calculate the quantity of the denomination contained in the dollarAmount.
+This function is used to calculate the quantity of the denomination contained in the dollarAmountInCents.
 
 ### def isValidDollarAmount(dollarAmount: float) -> bool
 
-This function checks if the dollarAmount >= 0.
+This function checks if the dollarAmount >= 0 before converting to cents
 
-### def CalculateExactChange(dollarAmount: float) -> DenominationsType raises InvalidDollarAmountRange
+### def CalculateExactChange(dollarAmount: int) -> DenominationsType raises InvalidDollarAmountRange
 
-This function will calculate each denominations and return a dictionary of DenominationsType. dollarAmount will be rounded up to the hundredth. If dollarAmount is < 0, InvalidDollarAmountRange is raised.
+This function will calculate each denominations and return a dictionary of DenominationsType. If dollarAmount is < 0, InvalidDollarAmountRange is raised. dollarAmount will be rounded up to the hundredth and then convert the dollarAmount to cents.
 
 ## denomination_values.py
 
@@ -74,16 +74,16 @@ This function will calculate each denominations and return a dictionary of Denom
 
 ### class DenominationValues(Enum)
 
-HUNDRED = 100.00
-FIFTY = 50.00
-TWENTY = 20.00
-TEN = 10.00
-FIVE = 5.00
-ONE = 1.00
-QUARTER = 0.25
-DIME = 0.10
-NICKEL = 0.05
-PENNY = 0.01
+HUNDRED = 10000
+FIFTY = 5000
+TWENTY = 2000
+TEN = 1000
+FIVE = 500
+ONE = 100
+QUARTER = 25
+DIME = 10
+NICKEL = 05
+PENNY = 1
 
 ## denominations_type.py
 
