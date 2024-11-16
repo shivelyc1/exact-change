@@ -3,6 +3,9 @@ from waitress import serve
 from exact_change import CalculateExactChange
 from return_types.denominations_type import DenominationsType
 from exceptions.invalid_dollar_amount_range import InvalidDollarAmountRange
+import math
+
+
 # IP of the server. 0.0.0.0 is your local machine.
 HOST = "0.0.0.0"
 
@@ -45,7 +48,7 @@ def dollarAmount():
   denominations: DenominationsType = CalculateExactChange(dollarAmount)
 
   return render_template("denominations.html", 
-    dollarAmount=dollarAmount,
+    dollarAmount=math.ceil(dollarAmount * 100) / 100,
     hundreds=denominations["hundreds"],
     fifites=denominations["fifities"],
     twenties=denominations["twenties"],
