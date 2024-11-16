@@ -8,6 +8,11 @@ The goal of this program is to calculate the dollars and coins (denominations) o
 
 Python 13.6
 
+## Dependencies
+
+[Flask](https://flask.palletsprojects.com/en/stable/) - used to host html templates with python
+[waitress](https://flask.palletsprojects.com/en/stable/deploying/waitress/) - Used to run a production version of the server
+
 ## How to start the project?
 
 ### Easy Development Server
