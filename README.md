@@ -10,6 +10,7 @@ Python 13.6
 
 ## Dependencies
 
+Main dependencies in the project.
 [Flask](https://flask.palletsprojects.com/en/stable/) - used to host html templates with python
 [waitress](https://flask.palletsprojects.com/en/stable/deploying/waitress/) - Used to run a production version of the server
 
@@ -61,15 +62,15 @@ The server is set up to handle error codes and render those accordingly.
 
 **exact_change.py** is responsible for calculating the denomination quantities for a specific dollar amount. This holds helper functions to organize the code.
 
-### def CalcDenominationQuantity(dollarAmountInCents: int, denominationValue: DenominationValue) -> int
+`def CalcDenominationQuantity(dollarAmountInCents: int, denominationValue: DenominationValue) -> int`
 
 This function is used to calculate the quantity of the denomination contained in the dollarAmountInCents.
 
-### def isValidDollarAmount(dollarAmount: float) -> bool
+`def isValidDollarAmount(dollarAmount: float) -> bool`
 
 This function checks if the dollarAmount >= 0 before converting to cents
 
-### def CalculateExactChange(dollarAmount: int) -> DenominationsType raises InvalidDollarAmountRange
+`def CalculateExactChange(dollarAmount: int) -> DenominationsType raises InvalidDollarAmountRange`
 
 This function will calculate each denominations and return a dictionary of DenominationsType. If dollarAmount is < 0, InvalidDollarAmountRange is raised. dollarAmount will be rounded up to the hundredth and then convert the dollarAmount to cents.
 
@@ -77,7 +78,8 @@ This function will calculate each denominations and return a dictionary of Denom
 
 **denomination_values.py** has an enum holding the values for each denomination and its value in USD.
 
-### class DenominationValues(Enum)
+```
+class DenominationValues(Enum)
 
 HUNDRED = 10000
 FIFTY = 5000
@@ -87,14 +89,16 @@ FIVE = 500
 ONE = 100
 QUARTER = 25
 DIME = 10
-NICKEL = 05
+NICKEL = 5
 PENNY = 1
+```
 
 ## denominations_type.py
 
 **denominations_type.py** has a TypedDict for the return type of **CalculateExactChange()**.
 
-### class DenominationsType(TypedDict)
+```
+class DenominationsType(TypedDict)
 
 hundreds: int
 fifties: int
@@ -106,6 +110,7 @@ quarters: int
 dimes: int
 nickels: int
 pennies: int
+```
 
 ## exact_change_test.py
 
