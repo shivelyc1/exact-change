@@ -14,15 +14,20 @@
 	</head>
 	<body>
 		<h1>Exact Change</h1>
-		<p>
+		<p class="subtitle">
 			Enter the dollar amount and see the exact change that is equivalent to the
 			dollar amount.
 		</p>
 
+		{% if code %}
+		<p class="error">Error {{code}}: {{message}}</p>
+		{% endif %}
 		<form action="/dollar-amount">
+			<label for="dollarAmount">Dollar Amount:</label>
 			<input
 				type="number"
 				name="dollarAmount"
+				required
 				step=".01"
 				min="0"
 				id="dollar-amount-input"

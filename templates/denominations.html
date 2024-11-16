@@ -14,15 +14,17 @@
 	</head>
 	<body>
 		<h1>Exact Change</h1>
-		<p>
+		<p class="subtitle">
 			Enter the dollar amount and see the exact change that is equivalent to the
 			dollar amount.
 		</p>
 
 		<form action="/dollar-amount">
+			<label for="dollarAmount">Dollar Amount:</label>
 			<input
 				type="number"
 				name="dollarAmount"
+				required
 				step=".01"
 				min="0"
 				id="dollar-amount-input"
@@ -30,52 +32,53 @@
 			/>
 			<button type="submit">Submit</button>
 		</form>
-
-		<table>
-			<tr>
-				<th>Denomination</th>
-				<th>Amount</th>
-			</tr>
-			<tr>
-				<td>Hundreds</td>
-				<td>{{hundreds}}</td>
-			</tr>
-			<tr>
-				<td>Fifties</td>
-				<td>{{fifites}}</td>
-			</tr>
-			<tr>
-				<td>Twenties</td>
-				<td>{{twenties}}</td>
-			</tr>
-			<tr>
-				<td>Tens</td>
-				<td>{{tens}}</td>
-			</tr>
-			<tr>
-				<td>Fives</td>
-				<td>{{fives}}</td>
-			</tr>
-			<tr>
-				<td>Ones</td>
-				<td>{{ones}}</td>
-			</tr>
-			<tr>
-				<td>Quarters</td>
-				<td>{{quarters}}</td>
-			</tr>
-			<tr>
-				<td>Dimes</td>
-				<td>{{dimes}}</td>
-			</tr>
-			<tr>
-				<td>Nickels</td>
-				<td>{{nickels}}</td>
-			</tr>
-			<tr>
-				<td>Pennies</td>
-				<td>{{pennies}}</td>
-			</tr>
-		</table>
+		<div class="table-container">
+			<table>
+				<tr>
+					<th>Denomination</th>
+					<th>Amount</th>
+				</tr>
+				<tr>
+					<td class="denomination-name">Hundreds</td>
+					<td>{{hundreds}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Fifties</td>
+					<td>{{fifites}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Twenties</td>
+					<td>{{twenties}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Tens</td>
+					<td>{{tens}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Fives</td>
+					<td>{{fives}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Ones</td>
+					<td>{{ones}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Quarters</td>
+					<td>{{quarters}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Dimes</td>
+					<td>{{dimes}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Nickels</td>
+					<td>{{nickels}}</td>
+				</tr>
+				<tr>
+					<td class="denomination-name">Pennies</td>
+					<td>{{pennies}}</td>
+				</tr>
+			</table>
+		</div>
 	</body>
 </html>
