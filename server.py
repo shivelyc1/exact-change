@@ -15,7 +15,6 @@ PORT = "5000"
 # Create an instance of Flask named app
 #   This controls the webpage server to serve the client with pages, data, and more.
 app = Flask(__name__, template_folder="templates")
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Index Page
 #   Serves index.html to the client
