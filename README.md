@@ -11,8 +11,9 @@ Python 13.6
 ## Dependencies
 
 Main dependencies in the project.
-[Flask](https://flask.palletsprojects.com/en/stable/) - used to host html templates with python
-[waitress](https://flask.palletsprojects.com/en/stable/deploying/waitress/) - Used to run a production version of the server
+
+- [Flask](https://flask.palletsprojects.com/en/stable/) - used to host html templates with python
+- [waitress](https://flask.palletsprojects.com/en/stable/deploying/waitress/) - Used to run a production version of the server
 
 ## How to start the project?
 
@@ -79,18 +80,18 @@ This function will calculate each denominations and return a dictionary of Denom
 **denomination_values.py** has an enum holding the values for each denomination and its value in USD.
 
 ```
-class DenominationValues(Enum)
+class DenominationValues(Enum):
 
-HUNDRED = 10000
-FIFTY = 5000
-TWENTY = 2000
-TEN = 1000
-FIVE = 500
-ONE = 100
-QUARTER = 25
-DIME = 10
-NICKEL = 5
-PENNY = 1
+  HUNDRED = 10000
+  FIFTY = 5000
+  TWENTY = 2000
+  TEN = 1000
+  FIVE = 500
+  ONE = 100
+  QUARTER = 25
+  DIME = 10
+  NICKEL = 5
+  PENNY = 1
 ```
 
 ## denominations_type.py
@@ -98,18 +99,18 @@ PENNY = 1
 **denominations_type.py** has a TypedDict for the return type of **CalculateExactChange()**.
 
 ```
-class DenominationsType(TypedDict)
+class DenominationsType(TypedDict):
 
-hundreds: int
-fifties: int
-twenties: int
-tens: int
-fives: int
-ones: int
-quarters: int
-dimes: int
-nickels: int
-pennies: int
+  hundreds: int
+  fifties: int
+  twenties: int
+  tens: int
+  fives: int
+  ones: int
+  quarters: int
+  dimes: int
+  nickels: int
+  pennies: int
 ```
 
 ## exact_change_test.py
