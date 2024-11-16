@@ -77,6 +77,6 @@ def display500Code(error):
   print(error)
   return render_template("index.html", code=500, message="Internal Server Error...")
 
-
+# Run production version when running the server file with python
 if __name__ == "__main__":
   serve(app, host=HOST, port=PORT)
